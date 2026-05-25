@@ -7,7 +7,7 @@ print(a - b)   # Subtraction
 print(a * b)   # Multiplication
 print(a / b)   # Division
 print(a // b)  # Integer division (no decimal)
-print(a % b)   # Remainder
+print(a % b)   # Modulus (get remainder)
 print(a ** 2)  # Power (10 to the power 2)
 
 # Strings

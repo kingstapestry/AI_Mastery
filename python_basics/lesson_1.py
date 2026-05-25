@@ -12,3 +12,8 @@ is_learning_ai = True   # True or False (boolean)
 print("My name is", name)
 print("I am", age, "years old")
 print("I am from", city)
+
+if is_learning_ai is True:
+    print(f"Learning AI: {is_learning_ai}")
+else:
+    print(f"Learning AI: {is_learning_ai}")
