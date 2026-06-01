@@ -13,12 +13,13 @@ print(a ** 2)  # Power (10 to the power 2)
 # Strings
 first = "King"
 last = "STPS"
-full = first + " " + last
+full = first + " " + last       # Put both strings together
 print(full)
-print(full.upper())
-print(full.lower())
+print(full.upper()) # Uppercase
+print(full.lower()) # Lowercase
 
-# Lists - ordered collection
+# Lists - ordered collection (stores multiple data types if needed)
+# Not to be confused with array (stores single data type eg. all ints)
 skills = ["Python", "VS Code", "AI"]
 skills.append("Machine Learning")
 print(skills)

@@ -35,16 +35,16 @@ print("Max:", arr1.max())
 
 # Write your code for Exercises 9.1 - 9.3 here:
 
-# 1D Array from 10 to 20
+# 1D array from 10 to 20
 numArr2  = np.arange(10, 21)
 print(numArr2)
 
-# 3x3 Matrix of Zeros, Diagonals with 5
+# 3x3 matrix of zeros, diagonals with 5
 arr3 = np.zeros((3, 3))
 np.fill_diagonal(arr3, 5)
 print(arr3)
 
-# Operations of 2 arrays simulataneously
+# Operations of 2 arrays simulataneously by elements
 a = np.array([1, 2, 3, 4])
 b = np.array([5, 6, 7, 8])
 

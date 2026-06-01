@@ -46,13 +46,13 @@ print(df[df["AI_Score"] > 80])
 # Write your solutions here:
 
 df.insert(5, "Motivation_Level", [8, 7, 9, 6, 8])
-df.to_csv("python_basics/ai_students.csv", index=True)
+df.to_csv("python_basics/ai_students.csv", index=True)      # Creates and saves to CSV
 
-df2 = pd.read_csv("python_basics/ai_students.csv")
+df2 = pd.read_csv("python_basics/ai_students.csv")      # Reads csv
 print(df2)
 
 print("\nStudents older than 24 and have AI Score > 75:")
-print(df2[(df2["Age"] > 24) & (df2["AI_Score"] > 75)])
+print(df2[(df2["Age"] > 24) & (df2["AI_Score"] > 75)])      # Filter ages over 24 and ai score over 75
 
-filtered_df = df2.sort_values(by="AI_Score", ascending=False)
-print(filtered_df.head(3))
+filtered_df = df2.sort_values(by="AI_Score", ascending=False)       # Sorting AI score values in descending order
+print(filtered_df.head(3))      # Printing top 3 

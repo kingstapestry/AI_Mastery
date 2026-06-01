@@ -1,5 +1,5 @@
-name = input("What is your name? ")
-age = int(input("How old are you? "))   # int() converts text to number
+name = input("What is your name? ")     # Ask for input from user
+age = int(input("How old are you? "))   # int() converts text to number 
 
 if age >= 18:
     print(name, "you are an adult. Good for AI journey!")

@@ -45,7 +45,7 @@ print_skills(my_skills)
 
 # Write your Exercise 5.1 code here:
 
-def caculate_ai_score(python_level: int, math_level: int, motivation: int):
+def caculate_ai_score(python_level: int, math_level: int, motivation: int):     # Params with type declaration
     average = (python_level + math_level + motivation) / 3
 
     if average >= 8:
@@ -64,7 +64,7 @@ caculate_ai_score(5, 10, 10)
 # Create a function called print_welcome that takes name and level,
 # and prints a motivational message.
 
-def print_welcome(name: str, level: int) -> None:
+def print_welcome(name: str, level: int) -> None:       # Params with type declaration and function with no return values hence -> None
     print(f"Welcome {name}! Since your level is {level}, you can do this. Keep going!")
 
 print_welcome("King", 5)
