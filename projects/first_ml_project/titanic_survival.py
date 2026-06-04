@@ -49,21 +49,10 @@ print("\nAfter Feature Engineering:\n", df.head())
 
 # ==================== PREPARE FOR MODEL ====================
 # Select features and target (Survived)
-"""
-X = All columns except Survived. These are the features (information) the model will learn from.
-y = Only the Survived column. This is the correct answer the model tries to learn.
-"""
 X = df.drop("Survived", axis=1)     # Features (inputs)
 y = df["Survived"]                  # Target (what we want to predict)
 
 # Split data into train and test (80/20)
-"""
-Divide data into training (80%) and testing (20%).
-The model learns from the training data (X_train, y_train).
-We test how good it is on unseen data (X_test, y_test).
-
-IMPORTANT: To check if the model is actually learning or just memorizing.
-"""
 X_train, X_test, y_train, y_test = train_test_split(
     X, y, test_size=0.2, random_state=42
 )
@@ -72,14 +61,6 @@ print("Testing samples:", X_test.shape[0])
 
 # ==================== TRAIN MODEL ====================
 # Train a RandomForestClassifier
-"""
-RandomForestClassifier() → We create the model (think of it as a smart student).
-.fit(X_train, y_train) → We train the model. We show it thousands of examples (features + correct answers), and it learns patterns.
-
-For example, the model might learn:
-"Women (Sex=1) had higher chance of survival"
-"Rich people (high Fare) had higher chance"
-"""
 rf_model = RandomForestClassifier(n_estimators=100, random_state=42)
 rf_model.fit(X_train, y_train)
 
@@ -87,12 +68,6 @@ lr_model = LogisticRegression(max_iter=500)
 lr_model.fit(X_train, y_train)
 
 # Make predictions on test set
-"""
-After training we test it: 
-
-The model looks at X_test (new passengers it hasn't seen) and makes predictions.
-Then we compare predictions with the real y_test to calculate Accuracy.
-"""
 rf_predictions = rf_model.predict(X_test)
 lr_predictions = lr_model.predict(X_test)
 
