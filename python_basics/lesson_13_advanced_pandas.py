@@ -55,4 +55,4 @@ df["Age_Group"] = pd.cut(df["Age"],
                          bins=[17, 22, 28, np.inf],
                          labels=["Young", "Mid", "Senior"])
 
-print(df)
+print(df.head())
