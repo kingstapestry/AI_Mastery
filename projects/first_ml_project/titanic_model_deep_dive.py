@@ -5,6 +5,12 @@ from sklearn.ensemble import RandomForestClassifier
 # from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score, classification_report, confusion_matrix
 
+"""
+Machine Learning Model to Predict: 
+
+Did the passenger survive the Titanic disaster or not?
+"""
+
 # ==================== LOAD AND PREPARE DATA ====================
 url = "https://raw.githubusercontent.com/datasciencedojo/datasets/master/titanic.csv"
 df = pd.read_csv(url)
