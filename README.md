@@ -60,7 +60,7 @@ This repository documents my complete learning path, projects, and progress towa
 ---
 
 ## 📂 Project Structure
-
+```bash
 AI Mastery/
 ├── python_basics/           # Foundational Python lessons
 ├── projects/                # All ML & AI projects
@@ -69,7 +69,7 @@ AI Mastery/
 ├── notebooks/               # Jupyter notebooks
 ├── requirements.txt
 └── README.md
-
+```
 
 ---
 
