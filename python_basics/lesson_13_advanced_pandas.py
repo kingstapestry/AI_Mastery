@@ -54,5 +54,4 @@ print(f"\nGrouped by Performance:\n{mean_scores}")
 df["Age_Group"] = pd.cut(df["Age"],
                          bins=[17, 22, 28, np.inf],
                          labels=["Young", "Mid", "Senior"])
-
 print(df.head())

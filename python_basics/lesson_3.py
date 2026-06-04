@@ -8,4 +8,4 @@ elif age >= 13:
 elif age < 10:
     print("What are you even here for?")
 else:
-    print("Young king! Start early 🔥")
+    print("Young! Start early 🔥")

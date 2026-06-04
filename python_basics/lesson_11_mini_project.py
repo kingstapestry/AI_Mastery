@@ -10,7 +10,6 @@ print("=== AI Student Performance Tracker ===\n")
 # Columns: Name, Python_Score, Math_Score, Motivation, Hours_Studied
 data = {
     "Name": ["Leighton", "Kramer", "Amelia", "Antonio", "Titus", "Nyla", "Maxton", "Jaylen"],
-    # If random ints needed [random.randint(int_range_start, int_range_end) for _ in range(num_of_ints_needed)]
     "Python_Score": [73, 38, 80, 52, 54, 37, 65, 65],
     "Math_Score": [35, 96, 65, 43, 38, 37, 71, 34],
     "Motivation": [10, 9, 7, 4, 6, 8, 6, 8],
