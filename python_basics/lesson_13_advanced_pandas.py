@@ -56,4 +56,3 @@ df["Age_Group"] = pd.cut(df["Age"],
                          labels=["Young", "Mid", "Senior"])
 
 print(df)
-
