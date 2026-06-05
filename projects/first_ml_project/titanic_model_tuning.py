@@ -72,6 +72,15 @@ print("\nClassification Report (RF-1):\n", classification_report(y_test, rf_mode
 # n_estimators=200, max_depth=5, min_samples_split=5, random_state=42
 # Train it, predict, and print accuracy
 
+"""
+MANUAL TUNING: Trying specific values by hand to see if we can beat default model
+
+n_estimators=200: Number of decision trees in the forest. More trees = more stable predictions (but slower)
+max_depth=5: Limits how deep each tree can grow. Prevents the model from becoming too complex and overfitting
+min_samples_split=5: Minimum number of samples required to split a node. Helps control overfitting
+random_state=42: Makes results reproducible
+"""
+
 rf_model_2 = RandomForestClassifier(n_estimators=200, max_depth=5, min_samples_split=5, random_state=42)
 rf_model_2.fit(X_train, y_train)
 
@@ -83,6 +92,19 @@ print("\nClassification Report (RF-2):\n", classification_report(y_test, rf_mode
 
 # ==================== 4. ADVANCED TUNING WITH GRIDSEARCHCV ====================
 # TODO: Define param_grid (copy this and modify if you want):
+
+"""
+GRIDSEARCHCV: Automatically searches through many combinations to find optimal settings
+
+param_grid: A dictionary that defines all the combinations you want to try. GridSearch will test every possible combination
+GridSearchCV: Automatically tries all combinations from param_grid and evaluates them using cross-validation
+cv=5: 5-fold cross validation (more reliable than single train/test split)
+n_jobs=-1: Uses all CPU cores to run faster
+
+grid_search.best_params_: Shows which combination gave the best result
+grid_search.best_score_: The best cross-validation score achieved
+"""
+
 param_grid = {
     'n_estimators': [100, 200],
     'max_depth': [None, 5, 10],
@@ -96,8 +118,8 @@ param_grid = {
 # 3. Print the best parameters: grid_search.best_params_
 # 4. Print the best score: grid_search.best_score_
 
-rf = RandomForestClassifier(random_state=42)
-grid_search = GridSearchCV(rf, param_grid=param_grid, cv=5, n_jobs=-1)
+rf_final = RandomForestClassifier(random_state=42)
+grid_search = GridSearchCV(rf_final, param_grid=param_grid, cv=5, n_jobs=-1)
 grid_search.fit(X_train, y_train)
 
 print(f"\nBest Parameters: {grid_search.best_params_}")
@@ -107,10 +129,19 @@ print(f"\nBest Score: {grid_search.best_score_:.4f}")
 # ==================== 5. FINAL EVALUATION ====================
 # TODO: Train final model using the best parameters and check accuracy on test set
 
+"""
+Final Evaluation
+
+grid_search.best_estimator_: This gives you the best trained model (already fitted with the winning parameters)
+.score(X_test, y_test): A quick way to get accuracy on the test set
+
+We use this final model to check real-world performance on unseen data
+"""
+
 best_rf_model = grid_search.best_estimator_
 test_accuracy = best_rf_model.score(X_test, y_test)
 
-print(f"Test Set Accuracy: {test_accuracy:.4f}")
+print(f"Test Set Accuracy (RF-Final): {test_accuracy:.4f}")
 
 
 # ==================== EXERCISES ====================
