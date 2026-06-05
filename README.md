@@ -17,8 +17,6 @@ This repository documents my complete learning path, projects, and progress towa
 ## 📍 Current Status
 
 - **Phase**: 2 (Machine Learning Mastery)
-- **Lessons Completed**: 16
-- **First ML Project**: Titanic Survival Predictor (Accuracy: ~82%)
 
 ---
 
@@ -78,8 +76,8 @@ AI Mastery/
 - **Python**
 - **Data Science**: NumPy, Pandas, Matplotlib, Seaborn
 - **Machine Learning**: Scikit-learn
-- **Deep Learning**: PyTorch (coming soon)
-- **LLMs**: Hugging Face, LangChain (coming soon)
+- **Deep Learning**: PyTorch
+- **LLMs**: Hugging Face, LangChain
 - **Tools**: VS Code, Git, Jupyter
 
 ---
