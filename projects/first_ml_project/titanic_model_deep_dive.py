@@ -5,11 +5,46 @@ from sklearn.ensemble import RandomForestClassifier
 # from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score, classification_report, confusion_matrix
 
-"""
-Machine Learning Model to Predict: 
 
-Did the passenger survive the Titanic disaster or not?
 """
+MODEL COMPARISON SUMMARY - LESSONS 14 to 17
+
+1. RandomForestClassifier (Titanic - Lessons 14-16)
+   - Type: Classification Model
+   - Task: Predict discrete categories (Survived = 1 or 0)
+   - Output: Class label (0 or 1)
+   - Evaluation Metrics: Accuracy, Precision, Recall, F1-score, Confusion Matrix
+   - Used for: Binary or Multi-class classification problems
+
+2. LogisticRegression (Titanic - Lesson 15)
+   - Type: Linear Classification Model
+   - Task: Also classification (binary)
+   - Simpler and faster than Random Forest
+   - Usually less accurate on complex datasets compared to Random Forest
+   - Good as a baseline model
+
+3. RandomForestRegressor (House Price Prediction - Lesson 17)
+   - Type: Regression Model
+   - Task: Predict continuous numerical values (house prices)
+   - Output: A real number (e.g. 25.6 instead of 0 or 1)
+   - Evaluation Metrics: MAE, RMSE, R² Score
+   - Used for: Predicting quantities, prices, temperatures, etc.
+
+Key Differences:
+
+- Classifier → Predicts categories / labels (Yes/No, Spam/Not Spam, etc.)
+- Regressor   → Predicts continuous numbers (prices, scores, sales, etc.)
+
+RandomForest (both Classifier and Regressor):
+- Ensemble method (uses many decision trees)
+- Very powerful and robust
+- Handles non-linear relationships well
+- Less prone to overfitting compared to single decision tree
+
+Why we tune models:
+- Default parameters are okay, but tuning (Manual or GridSearchCV) can improve performance.
+"""
+
 
 # ==================== LOAD AND PREPARE DATA ====================
 url = "https://raw.githubusercontent.com/datasciencedojo/datasets/master/titanic.csv"
