@@ -37,7 +37,7 @@ df = df.drop(["PassengerId", "Name", "Ticket", "Cabin"], axis=1)
 
 # Handle missing values
 df["Age"] = df["Age"].fillna(df["Age"].median())
-df["Embarked"] = df["Embarked"].fillna(df["Embarked"].mode()[0])
+df["Embarked"] = df["Embarked"].fillna(df["Embarked"].mode()[0])        # Extract the single, most frequent scalar value from a data column
 
 # Convert categorical features to numeric (ML models need numbers)
 df["Sex"] = df["Sex"].map({"male": 0, "female": 1})
@@ -54,7 +54,7 @@ print("\n--- Feature Engineering ---")
 df["FamilySize"] = df["SibSp"] + df["Parch"] + 1
 df["IsAlone"] = np.where(df["FamilySize"] == 1, 1, 0)
 
-print("New features added. Current columns:", df.columns.tolist())
+print("New features added. Current columns:", df.columns.tolist())      # Extracts all column names from a pandas DataFrame and returns them as a standard Python list
 
 
 # ==================== 4. PREPARE DATA FOR MODEL ====================
