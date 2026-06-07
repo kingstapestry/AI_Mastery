@@ -8,7 +8,9 @@ Created by **King** | Started: June 2026
 
 ## 🎯 Goal
 
-To become a **Jack of all trades in AI with Python** — from foundational Python to building real-world AI applications similar to ChatGPT, Grok, and Claude.
+To become a **Jack of all trades in AI with Python** — from foundational Python to building real-world AI applications similar to Grok, Claude and ChatGPT.
+
+Presenting myself as a strong Junior AI Engineer / ML Engineer candidate at frontier AI companies like xAI.
 
 This repository documents my complete learning path, projects, and progress toward becoming a professional AI Engineer.
 
