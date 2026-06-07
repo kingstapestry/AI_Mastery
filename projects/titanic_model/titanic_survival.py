@@ -7,18 +7,22 @@ from sklearn.metrics import accuracy_score, classification_report
 import joblib
 
 """
-TITANIC SURVIVAL PREDICTION - First ML Project
+Titanic Survival Prediction - First ML Project
 
 Goal:
-    Build a Machine Learning model to predict whether a passenger 
-    survived the Titanic disaster (Binary Classification).
+    Build and compare Machine Learning models to predict whether a passenger survived the Titanic.
 
-Key Learning Points:
-    - Full ML Pipeline: Load → Clean → Feature Engineering → Train → Evaluate
-    - Difference between Classifier and Regressor
-    - Importance of converting categorical data to numeric
+Key Skills Learned:
+    - Complete ML pipeline: Load → Clean → Feature Engineering → Train → Evaluate → Save
+    - Handling missing values (.fillna with median/mode)
+    - Converting categorical data to numeric using .map()
+    - Feature Engineering (FamilySize, IsAlone)
+    - Training RandomForestClassifier and LogisticRegression
+    - Basic model evaluation (accuracy, classification report)
     - Feature Importance analysis
-    - Saving trained models with joblib
+    - Saving models with joblib
+
+Result: ~82% accuracy with Random Forest
 """
 
 # ==================== 1. LOAD DATA ====================
