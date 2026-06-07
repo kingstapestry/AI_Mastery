@@ -8,16 +8,20 @@ from sklearn.linear_model import LinearRegression
 
 
 """
-HOUSE PRICE PREDICTION - Regression Project
+House Price Prediction (Regression Project)
 
 Goal:
-    Predict continuous house prices (medv) using the Boston Housing dataset.
+    Predict continuous house prices using the Boston Housing dataset.
 
-Key Learning Objectives:
+Key Skills Learned:
     - Difference between Classification and Regression problems
-    - Using RandomForestRegressor vs LinearRegression
+    - Using RandomForestRegressor (for predicting numbers)
+    - Regression evaluation metrics: MAE, RMSE, R² Score
     - Feature Scaling with StandardScaler
-    - Regression evaluation metrics (MAE, RMSE, R²)
+    - Comparing RandomForest vs LinearRegression
+    - Feature Importance on regression models
+
+Result: Random Forest achieved ~0.89 R² (very strong performance)
 """
 
 # ==================== 1. LOAD DATA ====================
