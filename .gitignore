@@ -180,3 +180,6 @@ cython_debug/
 .cursorignore
 .cursorindexingignore
 *.pkl
+python_basics/my_skills.txt
+python_basics/my_first_note.txt
+side_projects/finance_manager/statements.txt
