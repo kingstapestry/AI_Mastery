@@ -9,6 +9,25 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score, classification_report, confusion_matrix
 
 
+"""
+Pipelines + Multi-Class Classification (Iris Dataset)
+
+Goal:
+    Learn professional ML practices using Scikit-Learn Pipelines and multi-class classification.
+
+Key Skills Learned:
+    - Working with multi-class problems (3 flower species)
+    - Creating Pipelines (combining scaling + model in one object)
+    - Benefits of Pipeline: cleaner code, prevents data leakage
+    - Accessing steps inside a pipeline (named_steps)
+    - Using GridSearchCV with Pipelines
+    - Comparing models on an easy dataset (Iris)
+
+Observation:
+    On very simple datasets like Iris, even basic models can achieve very high accuracy.
+"""
+
+
 # ==================== 1. LOAD DATASET ====================
 """
 The Iris dataset is a classic multi-class classification problem.
