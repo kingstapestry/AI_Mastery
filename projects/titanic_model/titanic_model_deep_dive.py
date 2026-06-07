@@ -7,17 +7,19 @@ from sklearn.metrics import accuracy_score, classification_report, confusion_mat
 
 
 """
-TITANIC MODEL DEEP DIVE
+Titanic Model Deep Dive
 
 Goal:
-    Deepen understanding of model training, evaluation techniques, 
-    and how to analyze model behavior beyond simple accuracy.
+    Go beyond basic accuracy and deeply understand model behavior.
 
-Key Concepts Covered:
-    - Cross Validation (more reliable than single train/test split)
-    - Confusion Matrix (shows types of prediction errors)
-    - Feature Importance (which features influence decisions most)
-    - Model comparison (Random Forest vs Logistic Regression)
+Key Skills Learned:
+    - Confusion Matrix (shows types of errors the model makes)
+    - Cross Validation (cross_val_score) - more reliable performance estimate
+    - Feature Importance (which features influence predictions most)
+    - Comparing models more thoroughly
+    - Understanding train_test_split vs cross-validation
+
+Focused on interpretation and reliability of models.
 """
 
 # ==================== 1. LOAD AND PREPARE DATA ====================
