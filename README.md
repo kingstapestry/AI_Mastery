@@ -17,6 +17,10 @@ This repository documents my complete learning path, projects, and progress towa
 ## 📍 Current Status
 
 - **Phase**: 2 (Machine Learning Mastery)
+- **Key Projects Completed**:
+  - Titanic Survival Prediction (Classification) → ~82% accuracy
+  - House Price Prediction (Regression) → ~0.89 R²
+  - Iris Multi-Class Classification with Pipelines
 
 ---
 
@@ -30,13 +34,15 @@ This repository documents my complete learning path, projects, and progress towa
 ### Phase 2: Machine Learning Mastery (In Progress)
 - Scikit-learn fundamentals
 - Data preprocessing, feature engineering, model training & evaluation
-- Model tuning (GridSearchCV)
+- Model tuning (Manual + GridSearchCV)
+- Pipelines (best practice)
+- Classification & Regression projects
 - Multiple ML projects
 
 ### Phase 3: Advanced Python & Software Engineering
 - Deep OOP, Decorators, Generators, Context Managers
 - Testing (pytest), Logging, Debugging
-- Git, Project Architecture, Packaging
+- Git workflows, Project Architecture, Packaging
 
 ### Phase 4: Deep Learning with PyTorch
 - Neural Networks, CNNs, Transformers
@@ -57,12 +63,26 @@ This repository documents my complete learning path, projects, and progress towa
 
 ---
 
+## 🚀 How to Follow Along
+```bash
+git clone https://github.com/kingstapestry/AI-Mastery.git
+cd AI-Mastery
+
+python -m venv venv
+venv\Scripts\activate        # Windows
+pip install -r requirements.txt
+```
+
+---
+
 ## 📂 Project Structure
 ```bash
 AI Mastery/
 ├── python_basics/           # Foundational Python lessons
 ├── projects/                # All ML & AI projects
-│   └── first_ml_project/
+│   └── titanic_model/
+│   └── house_price_model/
+│   └── iris_classification/
 ├── data/                    # Datasets
 ├── notebooks/               # Jupyter notebooks
 ├── requirements.txt
@@ -85,21 +105,22 @@ AI Mastery/
 ## 📈 Progress Highlights
 
 - Completed strong foundation in Python and data manipulation
-- Built first Machine Learning model (Titanic Survival) with **82% accuracy**
-- Actively learning model training, evaluation, and hyperparameter tuning
-
+- Built and tuned Titanic Survival Classifier with **82% accuracy**
+- Built House Price Regressor **~0.89 R²**
+- Mastered model evaluation, tuning, feature engineering, and Pipelines
 ---
 
 ## 🚀 Future Portfolio Projects
 
-1. House Price Prediction
-2. Sentiment Analysis Web App
-3. Image Classification Model
-4. **Personal AI Chatbot**
-5. Document Q&A System (RAG)
-6. Smart Resume Tailorer
-7. AI-powered Personal Assistant
-8. Full-stack AI Web Application
+1. Titanic Survival Predictor (Done)
+2. House Price Prediction (Done)
+3. Sentiment Analysis Web App
+4. Image Classification Model
+5. **Personal AI Chatbot**
+6. Document Q&A System (RAG)
+7. Smart Resume Tailorer
+8. AI-powered Personal Assistant
+9. Full-stack AI Web Application
 
 ---
 
