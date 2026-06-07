@@ -6,16 +6,20 @@ from sklearn.metrics import accuracy_score, classification_report
 
 
 """
-TITANIC MODEL TUNING PROJECT
+Model Tuning (Hyperparameter Optimization)
 
 Goal:
-    Learn how to improve model performance through hyperparameter tuning.
+    Learn how to improve model performance by tuning hyperparameters.
 
-Key Concepts:
-    - Manual Hyperparameter Tuning
-    - Automated Hyperparameter Tuning with GridSearchCV
+Key Skills Learned:
+    - Manual Tuning (changing n_estimators, max_depth, min_samples_split manually)
+    - Automated Tuning with GridSearchCV
     - Understanding important RandomForest parameters
-    - Comparing Base vs Tuned models
+    - Comparing Base Model vs Manually Tuned vs GridSearch Tuned models
+    - Using best_estimator_ and best_params_
+
+Important Realization:
+    Tuning doesn't always give big improvements on small/clean datasets.
 """
 
 # ==================== 1. LOAD AND PREPARE DATA ====================
