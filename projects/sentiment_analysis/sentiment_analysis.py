@@ -8,12 +8,18 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score, classification_report, confusion_matrix
 
 
-# ==================== 1. LOAD DATASET ====================
 """
-We'll use a popular movie reviews dataset for sentiment analysis (positive/negative).
+LESSON 21: Sentiment Analysis on IMDB Movie Reviews
+
+Goal:
+    Learn how to work with text data using TF-IDF vectorization — 
+    a fundamental skill before moving into modern LLMs.
+
+This is different from previous tabular projects because we are dealing with raw text.
 """
 
-url = "https://raw.githubusercontent.com/laxmimerit/IMDB-Movie-Reviews-Sentiment-Analysis/master/IMDB-Dataset.csv"
+# ==================== 1. LOAD DATASET ====================
+url = "https://github.com/Ankit152/IMDB-sentiment-analysis/raw/master/IMDB-Dataset.csv"
 df = pd.read_csv(url)
 
 print("Dataset Shape:", df.shape)
@@ -22,35 +28,98 @@ print("\nSentiment Distribution:\n", df['sentiment'].value_counts())
 
 
 # ==================== 2. DATA PREPROCESSING ====================
-# TODO: Convert sentiment labels to numeric (positive = 1, negative = 0)
+# Convert string labels to numbers (required for all ML models)
+df["sentiment"] = df["sentiment"].map({"positive": 1, "negative": 0})
+
+print("Labels converted to numeric (1 = positive, 0 = negative)")
 
 
 # ==================== 3. TRAIN-TEST SPLIT ====================
-# TODO: Split data (test_size=0.2, random_state=42, stratify=y)
+# X must be the text column only (Series), not a DataFrame
+X = df["review"]           # ← Text data
+y = df["sentiment"]
+
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.2, random_state=42, stratify=y
+)
+
+print(f"Training samples: {X_train.shape[0]}")
+print(f"Testing samples : {X_test.shape[0]}")
 
 
-# ==================== 4. CREATE PIPELINE ====================
-# TODO: Create a Pipeline with:
-# 1. TfidfVectorizer (converts text to numbers)
-# 2. RandomForestClassifier (or LogisticRegression)
+# ==================== 4. CREATE PIPELINE (Random Forest) ====================
+"""
+TfidfVectorizer is the key step for text:
+- Converts raw text into numerical features (importance of each word)
+- max_features=5000 limits vocabulary size for speed and performance
+"""
+
+rf_pipeline = Pipeline([
+    ('vectorizer', TfidfVectorizer(max_features=5000)),
+    ('classifier', RandomForestClassifier(random_state=42))
+])
 
 
 # ==================== 5. TRAIN AND EVALUATE ====================
-# TODO: Fit the pipeline, make predictions, and print:
-# - Accuracy
-# - Classification Report
-# - Confusion Matrix
+rf_pipeline.fit(X_train, y_train)
+rf_pred = rf_pipeline.predict(X_test)
+
+print("\n=== Random Forest Pipeline Evaluation ===")
+print(f"Accuracy: {accuracy_score(y_test, rf_pred):.4f}")
+print("\nClassification Report:")
+print(classification_report(y_test, rf_pred))
+print("\nConfusion Matrix:")
+print(confusion_matrix(y_test, rf_pred))
 
 
-# ==================== 6. TRY DIFFERENT MODELS ====================
-# TODO: Create another pipeline using LogisticRegression and compare results
+# ==================== 6. LOGISTIC REGRESSION PIPELINE ====================
+"""
+Logistic Regression often performs surprisingly well on text data with TF-IDF.
+"""
+
+lr_pipeline = Pipeline([
+    ('vectorizer', TfidfVectorizer(max_features=5000)),
+    ('classifier', LogisticRegression(max_iter=500))
+])
+
+lr_pipeline.fit(X_train, y_train)
+lr_pred = lr_pipeline.predict(X_test)
+
+print("\n=== Logistic Regression Pipeline Evaluation ===")
+print(f"Accuracy: {accuracy_score(y_test, lr_pred):.4f}")
+print("\nClassification Report:")
+print(classification_report(y_test, lr_pred))
+print("\nConfusion Matrix:")
+print(confusion_matrix(y_test, lr_pred))
 
 
-# ==================== 7. FEATURE IMPORTANCE (Advanced) ====================
-# TODO: Show the most important words/features for positive and negative sentiment
+# ==================== 7. MOST IMPORTANT WORDS ====================
+print("\n=== Most Important Words for Sentiment ===")
+
+# Extract steps from the better pipeline (Logistic Regression)
+vectorizer = lr_pipeline.named_steps['vectorizer']
+classifier = lr_pipeline.named_steps['classifier']
+
+feature_names = vectorizer.get_feature_names_out()
+coefficients = classifier.coef_[0]
+
+word_importance = pd.DataFrame({
+    'Word': feature_names,
+    'Importance': coefficients
+})
+
+print("Top 15 Positive Words:")
+print(word_importance.nlargest(15, 'Importance')[['Word', 'Importance']])
+
+print("\nTop 15 Negative Words:")
+print(word_importance.nsmallest(15, 'Importance')[['Word', 'Importance']])
 
 
-# ==================== EXERCISES ====================
-# 1. Try different ngram_range in TfidfVectorizer (e.g., (1,2) for bigrams)
-# 2. Add stop_words='english' to TfidfVectorizer
-# 3. Try a more advanced model (e.g., with class_weight)
+# ==================== SUMMARY ====================
+"""
+Key Takeaways from Text Classification:
+- Text must be converted to numbers using TfidfVectorizer (or CountVectorizer)
+- Logistic Regression + TF-IDF is often very strong for sentiment analysis
+- We can interpret the model by looking at important words
+- This is the foundation for more advanced NLP and LLM applications
+"""
