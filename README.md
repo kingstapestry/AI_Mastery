@@ -10,19 +10,24 @@ Created by **King** | Started: June 2026
 
 To become a **Jack of all trades in AI with Python** — from foundational Python to building real-world AI applications similar to Grok, Claude and ChatGPT.
 
-Presenting myself as a strong Junior AI Engineer / ML Engineer candidate at frontier AI companies like xAI.
+**Primary Target**: Position myself as a strong AI/ML Engineer candidate for frontier companies like xAI.
 
-This repository documents my complete learning path, projects, and progress toward becoming a professional AI Engineer.
+This repository documents my complete learning path, projects, and progress.
 
 ---
 
 ## 📍 Current Status
 
-- **Phase**: 2 (Machine Learning Mastery)
+- **Phase**: 3 (Advanced Python & Software Engineering)
 - **Key Projects Completed**:
   - Titanic Survival Prediction (Classification) → ~82% accuracy
   - House Price Prediction (Regression) → ~0.89 R²
   - Iris Multi-Class Classification with Pipelines
+  - Diabetes Prediction (Real-world + Imbalanced Data)
+  - Sentiment Analysis (Text Data)
+  - Customer Churn Prediction (Mixed Data + ColumnTransformer)
+  - Model Ensembling & Stacking
+  - Systematic Model Selection & Experiment Tracking
 
 ---
 
@@ -33,15 +38,15 @@ This repository documents my complete learning path, projects, and progress towa
 - Data Analysis: NumPy, Pandas, Matplotlib & Seaborn
 - File handling and basic project structure
 
-### Phase 2: Machine Learning Mastery (In Progress)
+### Phase 2: Machine Learning Mastery ✅
 - Scikit-learn fundamentals
-- Data preprocessing, feature engineering, model training & evaluation
-- Model tuning (Manual + GridSearchCV)
-- Pipelines (best practice)
-- Classification & Regression projects
+- Data preprocessing, feature engineering & model training
+- Model tuning, ensembling, systematic evaluation 
+- Pipelines, ColumnTransformer 
+- Classification, Regression, Text Data, Imbalanced Data
 - Multiple ML projects
 
-### Phase 3: Advanced Python & Software Engineering
+### Phase 3: Advanced Python & Software Engineering (In Progress)
 - Deep OOP, Decorators, Generators, Context Managers
 - Testing (pytest), Logging, Debugging
 - Git workflows, Project Architecture, Packaging
@@ -85,6 +90,9 @@ AI Mastery/
 │   └── titanic_model/
 │   └── house_price_model/
 │   └── iris_classification/
+│   └── sentiment_analysis/
+│   └── diabetes_prediction_model/
+│   └── customer_churn_model/
 ├── data/                    # Datasets
 ├── notebooks/               # Jupyter notebooks
 ├── requirements.txt
@@ -106,23 +114,25 @@ AI Mastery/
 
 ## 📈 Progress Highlights
 
-- Completed strong foundation in Python and data manipulation
-- Built and tuned Titanic Survival Classifier with **82% accuracy**
-- Built House Price Regressor **~0.89 R²**
-- Mastered model evaluation, tuning, feature engineering, and Pipelines
+- Strong foundation in Python and Data Manipulation
+- Built and tuned multiple ML models across classification, regression, and text data
+- Mastered Pipelines, ColumnTransformer, model tuning, and systematic evaluation
+- Completed 24 structured ML lessons
 ---
 
 ## 🚀 Future Portfolio Projects
 
 1. Titanic Survival Predictor (Done)
 2. House Price Prediction (Done)
-3. Sentiment Analysis Web App
-4. Image Classification Model
-5. **Personal AI Chatbot**
-6. Document Q&A System (RAG)
-7. Smart Resume Tailorer
-8. AI-powered Personal Assistant
-9. Full-stack AI Web Application
+3. Sentiment Analysis Tool (Done)
+4. Diabetes Prediction (Done)
+5. Customer Churn Predictor (Done)
+6. Image Classification Model
+7. **Personal AI Chatbot**
+8. Document Q&A System (RAG)
+9. Smart Resume Tailorer
+10. AI-powered Personal Assistant
+11. Full-stack AI Web Application
 
 ---
 
