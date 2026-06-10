@@ -86,6 +86,7 @@ pip install -r requirements.txt
 ```bash
 AI Mastery/
 ├── python_basics/           # Foundational Python lessons
+├── advanced_python/
 ├── projects/                # All ML & AI projects
 │   └── titanic_model/
 │   └── house_price_model/
