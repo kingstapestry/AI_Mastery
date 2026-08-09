@@ -2,7 +2,7 @@
 
 A comprehensive self-paced journey to become a **well-rounded AI Engineer** and **Python expert**.
 
-Created by **King** | Started: June 2026
+Created by **@kingstapestry** | Started: June 2026
 
 ---
 
@@ -10,15 +10,13 @@ Created by **King** | Started: June 2026
 
 To become a **Jack of all trades in AI with Python** — from foundational Python to building real-world AI applications similar to Grok, Claude and ChatGPT.
 
-**Primary Target**: Position myself as a strong AI/ML Engineer candidate for frontier companies like xAI.
-
 This repository documents my complete learning path, projects, and progress.
 
 ---
 
 ## 📍 Current Status
 
-- **Phase**: 3 (Advanced Python & Software Engineering)
+- **Phase**: 4 (Deep Learning with PyTorch)
 - **Key Projects Completed**:
   - Titanic Survival Prediction (Classification) → ~82% accuracy
   - House Price Prediction (Regression) → ~0.89 R²
@@ -31,7 +29,7 @@ This repository documents my complete learning path, projects, and progress.
 
 ---
 
-## 🗺️ Course Roadmap
+## 🗺️ Roadmap
 
 ### Phase 1: Python Foundations ✅
 - Core Python (variables, functions, OOP basics, comprehensions)
@@ -46,12 +44,12 @@ This repository documents my complete learning path, projects, and progress.
 - Classification, Regression, Text Data, Imbalanced Data
 - Multiple ML projects
 
-### Phase 3: Advanced Python & Software Engineering (In Progress)
+### Phase 3: Advanced Python & Software Engineering ✅
 - Deep OOP, Decorators, Generators, Context Managers
 - Testing (pytest), Logging, Debugging
 - Git workflows, Project Architecture, Packaging
 
-### Phase 4: Deep Learning with PyTorch
+### Phase 4: Deep Learning with PyTorch (In Progress)
 - Neural Networks, CNNs, Transformers
 - Building models from scratch
 
@@ -86,14 +84,16 @@ pip install -r requirements.txt
 ```bash
 AI Mastery/
 ├── python_basics/           # Foundational Python lessons
-├── advanced_python/
-├── projects/                # All ML & AI projects
+├── advanced_python/         # Advanced Python lessons
+├── projects/                # All ML & AI starter projects
 │   └── titanic_model/
 │   └── house_price_model/
 │   └── iris_classification/
 │   └── sentiment_analysis/
 │   └── diabetes_prediction_model/
 │   └── customer_churn_model/
+├── side_projects/           # Fun Stuff 
+├── portfolio/               # Portfolio Projects (The Good Stuff @ Companies Scouting)
 ├── data/                    # Datasets
 ├── notebooks/               # Jupyter notebooks
 ├── requirements.txt
@@ -141,8 +141,6 @@ AI Mastery/
 
 This is my **public learning journey**. Feel free to follow along or use any code for your own learning.
 
-**"The goal is not just to learn AI — but to build real things and become job-ready."**
-
 ---
 
-**Last Updated**: June 2026
+**Last Updated**: August 2026
