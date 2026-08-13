@@ -83,7 +83,7 @@ cp .env.example .env
 ## Roadmap
 
 - Project Structure ✅
-- Knowledge base & RAG pipeline
+- Knowledge base & RAG pipeline ✅
 - Basic conversational agent
 - Tool-calling capabilities
 - FastAPI integration
