@@ -38,7 +38,7 @@ def load_vectorstore(persist_directory: str = "data/processed/chroma"):
 # ======================
 # Function: Retrieve Relevant Docs
 # ======================
-def retrieve_relevant_docs(query: str, k: int = 3):
+def retrieve_relevant_docs(query: str, k: int = 6):
     """
     Retrieve the most relevant documents for a given query.
     """
