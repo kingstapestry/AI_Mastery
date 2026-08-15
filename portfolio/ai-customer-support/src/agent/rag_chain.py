@@ -1,13 +1,13 @@
-from langchain_core.prompts import ChatPromptTemplate
 from langchain_openai import ChatOpenAI
 
+from src.agent.memory import ConversationMemory
 from src.knowledge.vectorstore import retrieve_relevant_docs
 
 
 # ======================
 # Function: Answer Question
 # ======================
-def answer_question(question: str) -> dict:
+def answer_question(question: str, memory: ConversationMemory | None = None) -> dict:
     """
     Answer a question using the knowledge base (RAG).
     Returns both the answer and the sources used.
@@ -66,22 +66,30 @@ Context:
 {context}
 """
 
-    # Create prompt 
-    prompt = ChatPromptTemplate.from_messages([
-        ("system", system_prompt),
-        ("human", "{question}")
-    ])
+    # Build messages list
+    messages = [
+        ("system", system_prompt.format(context=context))
+    ]
 
-    # Initialize LLM
+    # Add previous conversation history (before adding the new user message)
+    if memory:
+        for msg in memory.get_history():
+            messages.append((msg["role"], msg["content"]))
+
+    # Add current user message to memory
+    if memory:
+        memory.add_user_message(question)
+
+    # Add current question to the messages list
+    messages.append(("human", question))
+
+    # Call LLM directly with the messages
     llm = ChatOpenAI(model="gpt-4o-mini", temperature=0)
+    response = llm.invoke(messages)
 
-    # Create an run the chain
-    chain = prompt | llm
-
-    response = chain.invoke({
-        "context": context,
-        "question": question.strip()
-    })
+    # Add AI response to memory
+    if memory:
+        memory.add_ai_message(response.content)
 
     # Extract sources
     sources = []
