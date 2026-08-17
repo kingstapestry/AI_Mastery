@@ -1,125 +1,198 @@
+# projects/deep_learning/first_neural_net.py
+"""
+Lesson 36: Introduction to PyTorch & Neural Networks
+Goal: Build, train, evaluate, save and load a simple neural network from scratch using PyTorch.
+"""
+
 import torch
 import torch.nn as nn
 import torch.optim as optim
 import numpy as np
 
+# -------------------------------------------------
+# 1. BASIC TENSOR OPERATIONS
+# -------------------------------------------------
+print("=" * 60)
+print("1. BASIC TENSOR OPERATIONS")
+print("=" * 60)
 
-"""
-LESSON 36: Introduction to PyTorch & Neural Networks (Phase 4 Start)
+# Create tensors
+x = torch.tensor([[1.0, 2.0], [3.0, 4.0]])          # from list
+y = torch.zeros(2, 3)                                # zeros
+z = torch.randn(2, 3)                                # random normal
+ones = torch.ones(2, 2)
 
-Goal:
-    Learn the basics of PyTorch - the main deep learning framework used by many frontier AI labs.
-"""
+print("Tensor x:\n", x)
+print("Shape of x:", x.shape)
+print("Data type:", x.dtype)
 
-# ==================== 1. BASIC TENSOR OPERATIONS ====================
-print("=== 1. Tensors in PyTorch ===")
+# Basic operations
+print("\nAddition:\n", x + x)
+print("Matrix multiplication:\n", x @ x)             # or torch.matmul(x, x)
+print("Element-wise multiplication:\n", x * x)
 
-# Tensors are like NumPy arrays but can run on GPU and support automatic differentiation
-x = torch.tensor([1.0, 2.0, 3.0])
-y = torch.tensor([4.0, 5.0, 6.0])
-
-print(f"Tensor x: {x}")
-print(f"Tensor y: {y}")
-print(f"Addition: {x + y}")
-print(f"Multiplication: {x * y}")
-
-# Moving to GPU (if available)
+# Move to GPU if available
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-print(f"Using device: {device}")
+print(f"\nUsing device: {device}")
 
 x = x.to(device)
-print(f"Tensor moved to {device}")
+print("Tensor moved to device:", x.device)
 
 
-# ==================== 2. SIMPLE NEURAL NETWORK ====================
-print("\n=== 2. Creating a Neural Network ===")
+# -------------------------------------------------
+# 2. SIMPLE NEURAL NETWORK
+# -------------------------------------------------
+print("\n" + "=" * 60)
+print("2. SIMPLE NEURAL NETWORK")
+print("=" * 60)
 
-class SimpleNet(nn.Module):
+class SimpleNN(nn.Module):
     """
-    A simple neural network.
-    nn.Module is the base class for all neural networks in PyTorch.
+    A simple feedforward neural network with one hidden layer.
+    Architecture: Input(2) → Hidden(4) → Output(1)
     """
     def __init__(self):
-        super().__init__()                          # Required for nn.Module
-        self.layer1 = nn.Linear(2, 10)              # Input: 2 features → Hidden: 10 neurons
-        self.layer2 = nn.Linear(10, 1)              # Hidden: 10 → Output: 1 value
-        self.relu = nn.ReLU()                       # Activation function
-    
+        super().__init__()                       # important!
+        self.fc1 = nn.Linear(2, 4)               # input features → hidden
+        self.relu = nn.ReLU()                    # activation
+        self.fc2 = nn.Linear(4, 1)               # hidden → output
+
     def forward(self, x):
-        """
-        Defines how data flows through the network.
-        This is where the magic happens.
-        """
-        x = self.layer1(x)
+        x = self.fc1(x)
         x = self.relu(x)
-        x = self.layer2(x)
+        x = self.fc2(x)
         return x
 
 
-# Create the model
-model = SimpleNet()
-print("Model created successfully!")
+# Create the model and move it to the correct device
+model = SimpleNN().to(device)
+print(model)
 
 
-# ==================== 3. TRAINING LOOP ====================
-print("\n=== 3. Training the Network ===")
-
-# Synthetic data (XOR-like problem)
-X = torch.tensor([[0, 0], [0, 1], [1, 0], [1, 1]], dtype=torch.float32)
-y = torch.tensor([[0], [1], [1], [0]], dtype=torch.float32)
+# -------------------------------------------------
+# 3. TRAINING LOOP
+# -------------------------------------------------
+print("\n" + "=" * 60)
+print("3. TRAINING LOOP")
+print("=" * 60)
 
 # Loss function and optimizer
-criterion = nn.MSELoss()                        # Mean Squared Error
-optimizer = optim.Adam(model.parameters(), lr=0.1)  # Adam optimizer
+criterion = nn.MSELoss()                         # Mean Squared Error (good for regression)
+optimizer = optim.Adam(model.parameters(), lr=0.01)
 
-# Training loop
-for epoch in range(1000):
+
+# -------------------------------------------------
+# 4. DATA PREPARATION (XOR problem)
+# -------------------------------------------------
+print("\n" + "=" * 60)
+print("4. DATA PREPARATION (XOR)")
+print("=" * 60)
+
+# XOR truth table
+# 0 0 → 0
+# 0 1 → 1
+# 1 0 → 1
+# 1 1 → 0
+
+X = torch.tensor([
+    [0.0, 0.0],
+    [0.0, 1.0],
+    [1.0, 0.0],
+    [1.0, 1.0]
+], dtype=torch.float32).to(device)
+
+y = torch.tensor([
+    [0.0],
+    [1.0],
+    [1.0],
+    [0.0]
+], dtype=torch.float32).to(device)
+
+print("Inputs (X):\n", X)
+print("Targets (y):\n", y)
+
+
+# -------------------------------------------------
+# Training
+# -------------------------------------------------
+print("\nTraining the network...")
+epochs = 1000
+
+for epoch in range(epochs):
     # Forward pass
     outputs = model(X)
     loss = criterion(outputs, y)
-    
-    # Backward pass (backpropagation)
-    optimizer.zero_grad()                       # Clear previous gradients
-    loss.backward()                             # Compute gradients
-    optimizer.step()                            # Update weights
-    
-    if epoch % 200 == 0:
-        print(f"Epoch {epoch}, Loss: {loss.item():.4f}")
+
+    # Backward pass + optimize
+    optimizer.zero_grad()       # clear old gradients
+    loss.backward()             # compute gradients
+    optimizer.step()            # update weights
+
+    if (epoch + 1) % 200 == 0:
+        print(f"Epoch [{epoch+1}/{epochs}], Loss: {loss.item():.6f}")
 
 
-# ==================== 4. EVALUATION ====================
-print("\n=== 4. Final Evaluation ===")
+# -------------------------------------------------
+# 5. EVALUATION
+# -------------------------------------------------
+print("\n" + "=" * 60)
+print("5. EVALUATION")
+print("=" * 60)
 
-with torch.no_grad():                           # Disable gradient calculation for inference
+model.eval()                    # set to evaluation mode
+with torch.no_grad():           # no need to track gradients
     predictions = model(X)
-    print("Predictions:")
-    for i, pred in enumerate(predictions):
-        print(f"Input: {X[i].tolist()} → Predicted: {pred.item():.4f} → Target: {y[i].item()}")
+    print("Predictions:\n", predictions)
+    print("\nRounded predictions (0 or 1):")
+    print(torch.round(predictions))
 
 
-# ==================== 5. SAVE & LOAD MODEL ====================
-print("\n=== 5. Saving & Loading Model ===")
+# -------------------------------------------------
+# 6. SAVE & LOAD MODEL
+# -------------------------------------------------
+print("\n" + "=" * 60)
+print("6. SAVE & LOAD MODEL")
+print("=" * 60)
 
-# Save model
-torch.save(model.state_dict(), "projects\deep_learning\simple_net.pth")
-print("Model saved as 'projects\deep_learning\simple_net.pth'")
+# Save the model
+torch.save(model.state_dict(), "simple_nn.pth")
+print("Model saved to 'simple_nn.pth'")
 
-# Load model
-loaded_model = SimpleNet()
-loaded_model.load_state_dict(torch.load("projects\deep_learning\simple_net.pth"))
+# Load the model
+loaded_model = SimpleNN().to(device)
+loaded_model.load_state_dict(torch.load("simple_nn.pth", map_location=device))
+loaded_model.eval()
+
 print("Model loaded successfully!")
+print("Loaded model predictions:")
+with torch.no_grad():
+    print(loaded_model(X))
 
 
-# ==================== SUMMARY ====================
-"""
-Key Takeaways from This Lesson:
+# -------------------------------------------------
+# SUMMARY (Key Concepts)
+# -------------------------------------------------
+print("\n" + "=" * 60)
+print("SUMMARY – Key Concepts")
+print("=" * 60)
+print("""
+1. Difference between PyTorch and scikit-learn:
+   - scikit-learn: High-level, fixed models (fit/predict). Great for classical ML.
+   - PyTorch: Low-level, flexible, dynamic computation graphs. You define the architecture
+     and the training loop yourself. Preferred for research and deep learning.
 
-- PyTorch is dynamic and Pythonic (unlike TensorFlow's static graphs)
-- nn.Module is the base class for all neural networks
-- forward() defines how data flows through the network
-- Training loop: forward → loss → backward → optimize
-- Tensors can run on CPU or GPU
-- Saving/loading models is simple with state_dict()
+2. What nn.Module does:
+   - Base class for all neural networks in PyTorch.
+   - Automatically tracks parameters (weights & biases).
+   - You only need to define __init__ (layers) and forward (how data flows).
 
-This is the foundation for all deep learning in PyTorch.
-"""
+3. The training loop pattern (the heart of deep learning):
+   for epoch in range(epochs):
+       outputs = model(inputs)          # Forward pass
+       loss = criterion(outputs, targets)
+       optimizer.zero_grad()            # Clear gradients
+       loss.backward()                  # Backward pass (compute gradients)
+       optimizer.step()                 # Update weights
+
+This pattern is used in almost every deep learning project.
+""")
