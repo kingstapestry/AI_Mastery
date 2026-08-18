@@ -84,7 +84,7 @@ cp .env.example .env
 
 - Project Structure ✅
 - Knowledge base & RAG pipeline ✅
-- Basic conversational agent
+- Basic conversational agent ✅
 - Tool-calling capabilities
 - FastAPI integration
 - Conversational memory
